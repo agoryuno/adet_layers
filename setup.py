@@ -57,11 +57,22 @@ def get_extensions():
             include_dirs=include_dirs,
             define_macros=define_macros,
             extra_compile_args=extra_compile_args,
+            
         )
     ]
-
     return ext_modules
 
 
-if __name__ == "__main__":
-    print (get_extensions())
+setup(
+    name="adet_layers",
+    version="0.0.1",
+    author="Alex Goryunov",
+    url="https://github.com/agoryuno/adet_layers",
+    description=("Extracts the CUDA kernels from the original"
+                 " code of the DeepSolo model."),
+    packages=["adet_layers"],
+    python_requires=">=3.6",
+    install_requires=['torch'],
+    ext_modules=get_extensions(),
+    cmdclass={"build_ext": torch.utils.cpp_extension.BuildExtension}
+)
