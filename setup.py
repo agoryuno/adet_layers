@@ -48,7 +48,7 @@ def get_extensions():
 
     sources = [os.path.join(extensions_dir, s) for s in sources]
 
-    include_dirs = [extensions_dir]
+    include_dirs = [extensions_dir, "/usr/local/cuda/include"]
 
     ext_modules = [
         extension(
