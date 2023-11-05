@@ -40,11 +40,11 @@ def get_extensions():
             "-D__CUDA_NO_HALF2_OPERATORS__",
         ]
 
-        if torch_ver < [1, 7]:
-            # supported by https://github.com/pytorch/pytorch/pull/43931
-            CC = os.environ.get("CC", None)
-            if CC is not None:
-                extra_compile_args["nvcc"].append("-ccbin={}".format(CC))
+        #if torch_ver < [1, 7]:
+        #    # supported by https://github.com/pytorch/pytorch/pull/43931
+        #    CC = os.environ.get("CC", None)
+        #    if CC is not None:
+        #        extra_compile_args["nvcc"].append("-ccbin={}".format(CC))
 
     sources = [os.path.join(extensions_dir, s) for s in sources]
 
@@ -72,7 +72,7 @@ setup(
                  " code of the DeepSolo model."),
     packages=["adet_layers"],
     python_requires=">=3.10",
-    install_requires=['torch'],
+    #install_requires=['torch'],
     ext_modules=get_extensions(),
     cmdclass={"build_ext": torch.utils.cpp_extension.BuildExtension}
 )
