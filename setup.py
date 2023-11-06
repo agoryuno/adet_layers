@@ -72,7 +72,8 @@ setup(
                  " code of the DeepSolo model."),
     packages=["adet_layers"],
     python_requires=">=3.10",
-    #install_requires=['torch'],
+    install_requires=['torch',
+                      "scipy"],
     ext_modules=get_extensions(),
     cmdclass={"build_ext": torch.utils.cpp_extension.BuildExtension}
 )
